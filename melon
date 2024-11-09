@@ -1,0 +1,35 @@
+erDiagram
+    BOOK {
+        string ISBN "Unique ISBN"
+        string title "Book title"
+    }
+
+    AUTHOR {
+        string author_name "Author Name"
+    }
+
+    LIBRARY {
+        string library_name "Library Name"
+        string library_type "Main/Branch"
+    }
+
+    COPY {
+        int copy_number "Copy Number"
+        float price "Price Paid"
+    }
+
+    BORROWER {
+        string borrower_name "Borrower Name"
+        string borrower_ID "Unique Borrower ID"
+    }
+
+    LOAN {
+        string loan_date "Date of Loan"
+    }
+
+    BOOK ||--o{ AUTHOR : has
+    LIBRARY ||--o{ BOOK : contains
+    LIBRARY ||--o{ COPY : has
+    BORROWER ||--o{ LOAN : makes
+    COPY ||--o{ LOAN : is_loaned_as
+    LIBRARY ||--|{ LIBRARY : has_branch "Main library has branches"
